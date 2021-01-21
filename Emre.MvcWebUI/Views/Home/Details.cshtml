@@ -1,0 +1,102 @@
+﻿@model Emre.MvcWebUI.Entity.Product
+@{
+    ViewBag.Title = "Details";
+}
+<div id="product-details" class="container pb-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/Upload/@Model.Image" class="img-fluid rounded w-100">
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>@Model.Name</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @if (Model.IsApproved)
+                    {
+                        <span class="badge badge-primary">Stokta</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">Stokta yok</span>
+                    }
+
+                    <span class="product-number">#498494865</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <div id="description">
+                        @Model.Description
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-4">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="badge badge-success">53</span>
+                </div>
+                <div class="col-md-4">
+                    <div id="write-review">
+                        <a href="">Write a review</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <h4 id="product-price">@Model.Price ₺</h4>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("AddToCart", "Cart"))
+                    {
+                        @Html.HiddenFor(i => i.Id)
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-cart-plus"></i>
+                            Add To Cart
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="bd-example bd-example-tabs">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active show" id="description-tab" data-toggle="tab" href="#descriptionmy" role="tab" aria-controls="descriptionmy" aria-selected="true">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">Payment Methods</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="comment-tab" data-toggle="tab" href="#comment" role="tab" aria-controls="comment" aria-selected="false">Comment</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="descriptionmy" role="tabpanel" aria-labelledby="descriptionmy-tab">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                    <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    </div>
+                    <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment">
+                        <p>COMMENTS HERE.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

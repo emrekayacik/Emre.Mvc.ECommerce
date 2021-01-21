@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Emre.MvcWebUI.Entity.Category>
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+    
+}
+
+
+
+
+<div class="list-group">
+    <a class="list-group-item" href="/Home/List">
+        <i class="fa fa-angle-double-right"></i>
+        Tüm Kategoriler
+    </a>
+
+    @foreach (var category in Model)
+    {
+        if (selectedCategory != null)
+        {
+            if (category.Id == int.Parse(selectedCategory.ToString()))
+            {
+                //seçilen kategori ile route idsi birbirine eşit.
+                <a class="list-group-item active" href="/Home/List/@category.Id">
+                    <i class="fa fa-angle-double-right"></i>
+                    @category.Name
+                </a>
+            }
+            else
+            {
+
+                <a class="list-group-item" href="/Home/List/@category.Id">
+                    <i class="fa fa-angle-double-right"></i>
+                    @category.Name
+                </a>
+
+            }
+        }
+        else
+        {
+
+            <a class="list-group-item" href="/Home/List/@category.Id">
+                <i class="fa fa-angle-double-right"></i>
+                @category.Name
+            </a>
+
+        }
+
+
+
+
+    }
+</div>
+
+
